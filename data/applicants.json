@@ -1,0 +1,83 @@
+{
+  "test1_strong_eligible": {
+    "age": 27,
+    "income": 55000,
+    "creditScore": 760,
+    "employmentYears": 3,
+    "existingEMI": 5000,
+    "loanAmount": 800000,
+    "tenureMonths": 60,
+    "loanType": "personal",
+    "expectedStatus": "LIKELY_ELIGIBLE"
+  },
+
+  "test2_low_credit_score": {
+    "age": 27,
+    "income": 55000,
+    "creditScore": 620,
+    "employmentYears": 3,
+    "existingEMI": 5000,
+    "loanAmount": 800000,
+    "tenureMonths": 60,
+    "loanType": "personal",
+    "expectedStatus": "NOT_CURRENTLY_ELIGIBLE"
+  },
+
+  "test3_low_income": {
+    "age": 27,
+    "income": 18000,
+    "creditScore": 760,
+    "employmentYears": 3,
+    "existingEMI": 2000,
+    "loanAmount": 500000,
+    "tenureMonths": 60,
+    "loanType": "personal",
+    "expectedStatus": "NOT_CURRENTLY_ELIGIBLE"
+  },
+
+  "test4_high_foir": {
+    "age": 30,
+    "income": 30000,
+    "creditScore": 750,
+    "employmentYears": 4,
+    "existingEMI": 12000,
+    "loanAmount": 800000,
+    "tenureMonths": 60,
+    "loanType": "personal",
+    "expectedStatus": "NOT_CURRENTLY_ELIGIBLE"
+  },
+
+  "test5_missing_information": {
+    "message": "I earn ₹50,000 and want a personal loan.",
+    "expectedStatus": "NEEDS_MORE_INFORMATION",
+    "expectedMissingFields": [
+      "age",
+      "creditScore",
+      "employmentYears",
+      "existingEMI",
+      "loanAmount",
+      "tenureMonths"
+    ]
+  },
+
+  "test6_natural_language_variations": {
+    "messages": [
+      "I make 60k a month.",
+      "I need an 8 lakh loan.",
+      "My CIBIL score is 750.",
+      "I've been working for three years."
+    ],
+    "expectedNormalization": {
+      "income": 60000,
+      "loanAmount": 800000,
+      "creditScore": 750,
+      "employmentYears": 3
+    }
+  },
+
+  "test7_what_if": {
+    "initialLoanAmount": 800000,
+    "changedLoanAmount": 600000,
+    "expectedBehavior": "Backend recalculates eligibility using the changed loan amount."
+  }
+}
