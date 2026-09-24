@@ -1,0 +1,11 @@
+{
+  "personalLoan": {
+    "minAge": 21,
+    "maxAge": 60,
+    "minIncome": 25000,
+    "minCreditScore": 700,
+    "minEmploymentYears": 1,
+    "maxFOIR": 50,
+    "annualInterestRate": 12
+  }
+}
